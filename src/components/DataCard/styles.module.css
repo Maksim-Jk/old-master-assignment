@@ -1,0 +1,31 @@
+.info {
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.item {
+    border-radius: 8px;
+    border: 1px solid #E0E0E0;
+    padding: 12px 20px;
+}
+
+.item:last-child .description {
+    font-size: 14px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.value {
+    padding-right: 20px;
+    font-size: 24px;
+}

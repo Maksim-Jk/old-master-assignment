@@ -1,0 +1,28 @@
+.timeWrapper {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.timeLogo {
+    height: 54px;
+}
+
+.timeValue {
+    white-space: nowrap;
+    font-size: 18px;
+}
+
+.timeSelectWrapper {
+}
+
+.timeSelect {
+
+}
+
+.timeText {
+    white-space: nowrap
+}
