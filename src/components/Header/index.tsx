@@ -19,7 +19,7 @@ const Header = () => {
             pageTitle = 'Overview';
             break;
         case '/sales':
-            pageTitle = 'Sales Export';
+            pageTitle = 'Sales';
             break;
         default:
             pageTitle = 'Overview';
