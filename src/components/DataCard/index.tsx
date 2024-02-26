@@ -5,7 +5,8 @@ interface IDataCardProps {
         iconSrc?: string,
         value?: number,
         description: string,
-        days?: number
+        days?: number,
+        unitType?: string
     }
 }
 
@@ -20,7 +21,7 @@ export const DataCard: React.FC<IDataCardProps> = ({data}) => {
                             <img src={data.iconSrc} className={styles.icon} alt="icon"/>
                             <p className={styles.value}>{data.value.toFixed(2)}</p>
                         </div>
-                        <p className={styles.description}>{data.description} were consumed within the
+                        <p className={styles.description}>{data.unitType}{data.description} were consumed within the
                             last<b> {data.days}</b> days</p>
                     </div>
                 </>

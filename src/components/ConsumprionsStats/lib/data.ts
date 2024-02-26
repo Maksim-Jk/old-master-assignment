@@ -3,30 +3,36 @@ export type ConsumptionsCategory = "water" | "milk" | "powder" | "beans" | "syru
 export interface ConsumptionsData {
     description: string
     iconSrc?: string
-    category?: ConsumptionsCategory
+    category?: ConsumptionsCategory,
+    unitType?: string[]
 }
 
 export const consumptionsData: ConsumptionsData[] = [
     {
-        description: "liters of water",
+        description: " of water",
         iconSrc: "assets/icons/water-drop.svg",
-        category: "water"
+        category: "water",
+        unitType: ['liters', 'gallons']
     }, {
-        description: "liters of milk",
+        description: " of milk",
         iconSrc: "assets/icons/milk-bottle.svg",
-        category: "milk"
+        category: "milk",
+        unitType: ['liters', 'gallons']
     }, {
-        description: "kg of prowder",
+        description: " of powder",
         iconSrc: "assets/icons/coffee-cup.svg",
-        category: "powder"
+        category: "powder",
+        unitType: ['kg', 'funts']
     }, {
-        description: "kg of beans",
+        description: " of beans",
         iconSrc: "assets/icons/coffee-beans.svg",
-        category: "beans"
+        category: "beans",
+        unitType: ['kg', 'funts']
     }, {
-        description: "liters of syrup",
+        description: " of syrup",
         iconSrc: "assets/icons/syrup-bottle.svg",
-        category: "syrup"
+        category: "syrup",
+        unitType: ['liters', 'gallons']
     }, {
         description: "Please be aware thaty the quantities may differ from reality and that the numbers for today might not yet be completely avaible.",
     }

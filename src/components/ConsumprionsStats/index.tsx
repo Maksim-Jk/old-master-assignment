@@ -22,7 +22,7 @@ export const ConsumptionsStats: React.FC<Props> = ({data, unitType}) => {
                         value: item.category && cardsData[item.category],
                         days: cardsData.days,
                         description: item.description,
-
+                        unitType: item.unitType && unitType === "METRIC" ? item.unitType[0] : item.unitType && item.unitType[1],
                     }}
                 />
             ))}
