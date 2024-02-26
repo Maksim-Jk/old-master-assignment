@@ -39,6 +39,9 @@
 * В процессе разработки были созданы кастомные хуки React и хелперы для обработки данных и декомпозиции приложения.
 
 **Скриншоты:**
+![image](https://github.com/Maksim-Jk/old-master-assignment/assets/131034634/468505b3-fa7b-459d-b8b9-dc250f642105)
+![image](https://github.com/Maksim-Jk/old-master-assignment/assets/131034634/8bc58c1c-64ff-4c25-99c8-fa3d4755cc5d)
+![image](https://github.com/Maksim-Jk/old-master-assignment/assets/131034634/452600b0-5aac-4b4b-9be4-43afc8003249)
 
 **Запуск проекта:**
 
