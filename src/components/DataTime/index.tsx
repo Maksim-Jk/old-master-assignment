@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import moment from 'moment';
 import Select from 'react-select';
 import styles from './styles.module.css';
-import syncIcon from '@assets/icons/sync.svg';
+import syncIcon from '../../../public/assets/icons/sync.svg';
 
 interface TimeZoneOption {
     value: string;

@@ -1,12 +1,16 @@
 import styles from './styles.module.css';
 import DataTime from "@components/DataTime";
 
-import coffeeMakerIcon from '@assets/icons/coffee-maker.svg'
-import coffeeCupIcon from '@assets/icons/coffee-cup.svg'
+import coffeeMakerIcon from '../../../public/assets/icons/coffee-maker.svg'
+import coffeeCupIcon from '../../../public/assets/icons/coffee-cup.svg'
 import {Link, useLocation} from "react-router-dom";
+import useFetchData from "@/hooks/useFetchData.ts";
+import {HeaderConvertData} from "@/helpers/HeaderConvertData.ts";
 
 
 const Header = () => {
+    const data = useFetchData();
+    const {totalCoffeeCups, totalMachines, totalDays} = HeaderConvertData(data.data);
     const location = useLocation();
     let pageTitle;
 
@@ -27,16 +31,18 @@ const Header = () => {
             <div className={styles.logo}>
                 <h1>{pageTitle}</h1>
             </div>
-            <Link to="/sales">Sales</Link>
-            <Link to="/overview">Overview</Link>
+            <div className={styles.nav}>
+                <Link to="/sales">Sales</Link>
+                <Link to="/overview">Overview</Link>
+            </div>
             <div className={styles.data}>
                 <ul className={styles.stats}>
                     <li className={styles.statsItem}>
                         <div className={styles.statsInfo}>
                             <img className={styles.statsLogo}
                                  src={coffeeMakerIcon}
-                                 alt="saled coffee"/>
-                            <span className={styles.statsValue}>6</span>
+                                 alt="active machines"/>
+                            <span className={styles.statsValue}>{totalMachines}</span>
                         </div>
                     </li>
                     <li className={styles.statsItem}>
@@ -46,12 +52,12 @@ const Header = () => {
                                  alt="saled coffee"/>
                             <div className={styles.dataCoffeeCupsValue}>
                             <span className={styles.statsValue}>
-                                4081
+                                {totalCoffeeCups}
                             </span>
                             </div>
                         </div>
                         <p className={styles.statsDescription}>
-                            within the last <span className={styles.statsDescriptionValue}>7</span> days
+                            within the last <span className={styles.statsDescriptionValue}>{totalDays}</span> days
                         </p>
                     </li>
                 </ul>

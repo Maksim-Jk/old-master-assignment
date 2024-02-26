@@ -1,53 +1,31 @@
 import styles from "./styles.module.css";
 import {ConsumptionsConvertData} from "@/helpers/ConsumptionsConvertData.ts";
 import {DataCard} from "@components/DataCard";
+import {ConsumptionsCategory, consumptionsData} from "@components/ConsumprionsStats/lib/data.ts";
+import {DataItem} from "@/models/sales.ts";
 
-export const ConsumprionsStats: React.FC<any> = ({data}) => {
+interface Props {
+    data: DataItem[]
+    unitType: "METRIC" | "US";
+}
 
-    const cardsData = ConsumptionsConvertData(data)
+export const ConsumptionsStats: React.FC<Props> = ({data, unitType}) => {
+    const cardsData: Record<ConsumptionsCategory, number> = ConsumptionsConvertData(data, unitType)
 
     return (
         <div className={styles.cardsWrapper}>
-            <DataCard
-                data={
-                    {
-                        iconSrc: "/images/water.png",
-                        value: cardsData.water,
+            {consumptionsData.map((item, index) => (
+                <DataCard
+                    key={index}
+                    data={{
+                        iconSrc: item.iconSrc,
+                        value: item.category && cardsData[item.category],
                         days: cardsData.days,
-                        description: "liters of water"
-                    }
-                }
-            />
-            <DataCard
-                data={
-                    {
-                        iconSrc: "/images/water.png",
-                        value: cardsData.water,
-                        days: cardsData.days,
-                        description: "liters of water"
-                    }
-                }
-            />
-            <DataCard
-                data={
-                    {
-                        iconSrc: "/images/water.png",
-                        value: cardsData.water,
-                        days: cardsData.days,
-                        description: "liters of water"
-                    }
-                }
-            />
-            <DataCard
-                data={
-                    {
-                        iconSrc: "/images/water.png",
-                        value: cardsData.water,
-                        days: cardsData.days,
-                        description: "liters of water"
-                    }
-                }
-            />
+                        description: item.description,
+
+                    }}
+                />
+            ))}
         </div>
     );
 }

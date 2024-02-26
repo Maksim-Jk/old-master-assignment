@@ -1,0 +1,18 @@
+.buttons {
+    display: flex;
+}
+
+.button {
+    border-radius: 8px;
+    padding: 4px 16px;
+    background-color: #dcdcdc;
+    font-size: 12px;
+}
+
+.button:last-child {
+    margin-left: 12px;
+}
+
+.button.active {
+    background-color: #afafaf;
+}

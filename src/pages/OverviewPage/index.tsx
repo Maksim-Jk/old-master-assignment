@@ -4,9 +4,13 @@ import {DispensingsGraph} from "@components/DispensingsGraph";
 import useFetchData from "@/hooks/useFetchData.ts";
 import {CleaningsGraph} from "@components/CleaningsGraph";
 import {DispensingsByHierarchyGraph} from "@components/DispensingsByHierarchyGraph";
-import {ConsumprionsStats} from "@components/ConsumprionsStats";
+import {ConsumptionsStats} from "@components/ConsumprionsStats";
+import {ConsumptionsHeaderBtns} from "@components/OverviewCard/ui/ConsumptionsHeaderBtns";
+import {useState} from "react";
+
 
 const OverviewPage = () => {
+    const [unitType, setUnitType] = useState<"METRIC" | "US">("METRIC")
     const data = useFetchData();
 
     if (!data.data.length) return;
@@ -16,8 +20,12 @@ const OverviewPage = () => {
             <OverviewCard title="Discensings by Date">
                 <DispensingsGraph {...data}/>
             </OverviewCard>
-            <OverviewCard title="Consumptions">
-                <ConsumprionsStats {...data}/>
+            <OverviewCard
+                title="Consumptions"
+                control={<ConsumptionsHeaderBtns unitType={unitType} setUnitType={setUnitType}/>}
+            >
+                <ConsumptionsStats {...data} unitType={unitType}/>
+
             </OverviewCard>
             <OverviewCard title="Cleanings">
                 <CleaningsGraph/>

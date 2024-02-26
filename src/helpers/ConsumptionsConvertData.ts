@@ -1,3 +1,5 @@
+import {DataItem} from "@/models/sales.ts";
+
 interface Ingredients {
     water: number;
     milk: number;
@@ -7,7 +9,8 @@ interface Ingredients {
     days: number;
 }
 
-export const ConsumptionsConvertData = (data: any[]): Ingredients => {
+
+export const ConsumptionsConvertData = (data: DataItem[], unitType: "METRIC" | "US"): Ingredients => {
     const ingredients: Ingredients = {
         water: 0,
         milk: 0,
@@ -20,6 +23,8 @@ export const ConsumptionsConvertData = (data: any[]): Ingredients => {
     const uniqueDates = new Set<string>();
 
     data.forEach(item => {
+        const gallonsCoefficient = unitType === "US" ? 0.264172 : 1;
+        const funtsCoefficient = unitType === "US" ? 0.035314 : 1;
         const {recipie, summed_dispendings, local_date} = item;
         const volume = parseInt(recipie.match(/\d+/)?.[0] || '0'); // Извлекаем объем напитка из названия
         const coffeeRatio = 10 * (volume / 100); // 10 г кофе на каждые 100 мл
@@ -30,23 +35,21 @@ export const ConsumptionsConvertData = (data: any[]): Ingredients => {
 
         switch (true) {
             case /Капучино/.test(recipie):
-                ingredients.water += waterRatio * summed_dispendings;
-                ingredients.milk += milkRatio * summed_dispendings;
-                ingredients.powder += powderRatio * summed_dispendings;
-                ingredients.beans += coffeeRatio * summed_dispendings;
-                ingredients.syrup += syrupRatio * summed_dispendings;
+                ingredients.water += waterRatio * summed_dispendings / 1000 * gallonsCoefficient;
+                ingredients.milk += milkRatio * summed_dispendings / 1000 * gallonsCoefficient;
+                ingredients.powder += powderRatio * summed_dispendings / 1000 * funtsCoefficient;
+                ingredients.beans += coffeeRatio * summed_dispendings / 1000 * funtsCoefficient;
+                ingredients.syrup += syrupRatio * summed_dispendings / 1000 * gallonsCoefficient;
                 break;
             case /Американо/.test(recipie):
-                ingredients.water += waterRatio * summed_dispendings;
-                ingredients.beans += coffeeRatio * summed_dispendings;
+                ingredients.water += waterRatio * summed_dispendings / 1000 * gallonsCoefficient;
+                ingredients.beans += coffeeRatio * summed_dispendings / 1000 * funtsCoefficient;
                 break;
-            // Добавьте кейсы для других видов напитков, если необходимо
         }
 
         uniqueDates.add(local_date);
     });
 
-    // Преобразуем сироп в литры
     ingredients.syrup = ingredients.syrup / 1000;
     ingredients.days = uniqueDates.size;
 
