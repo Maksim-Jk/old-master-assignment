@@ -1,30 +1,48 @@
-# React + TypeScript + Vite
+## README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Описание:**
 
-Currently, two official plugins are available:
+Данный проект представляет собой веб-приложение, отображающее дашборд с двумя вкладками: "Overview" и "Sales".
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Вкладка "Overview":**
 
-## Expanding the ESLint configuration
+* Содержит различные графики для визуализации данных.
+* Содержит статистику.
+* Графики отрисовываются с анимацией.
+* Значения в графиках и статистике генерируются на основании моковых данных из файла "sales.json".
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Вкладка "Sales":**
 
-- Configure the top-level `parserOptions` property like this:
+* Содержит выгрузку данных из файла "sales.json" в виде таблицы
+* Поддерживает сортировку по столбцам по убыванию и возрастанию.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+**Технические характеристики:**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+* **Фреймворк:** React.js
+* **Библиотека для графиков:** ReCharts
+* **Маршрутизация:** react-router-dom
+* **Стилизация:** module.css
+* **Данные:** JSON-файл sales.json
+
+**Пример использования:**
+
+1. Запустите приложение.
+2. Перейдите на вкладку "Overview".
+3. Ознакомьтесь с представленными графиками и данными.
+4. Переключите текущий часовой пояс.
+5. Переключите формат данных (US/Metric)
+4. Перейдите на вкладку "Sales".
+5. Отсортируйте данные по интересующему вас столбцу.
+
+**Дополнительные сведения:**
+
+* В процессе разработки были созданы кастомные хуки React и хелперы для обработки данных и декомпозиции приложения.
+
+**Скриншоты:**
+
+**Запуск проекта:**
+
+1. Убедитесь, что у вас установлен Node.js и npm. 
+2. Клонируйте репозиторий с проектом. 
+3. Установите зависимости командой npm install. 
+4. Запустите проект командой npm run dev.
