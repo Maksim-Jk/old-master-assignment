@@ -1,8 +1,8 @@
 import styles from './styles.module.css';
 import DataTime from "@components/DataTime";
 
-import coffeeMakerIcon from '@assets/icons/coffee-maker.svg'
-import coffeeCupIcon from '@assets/icons/coffee-cup.svg'
+import coffeeMakerIcon from '../../../public/assets/icons/coffee-maker.svg'
+import coffeeCupIcon from '../../../public/assets/icons/coffee-cup.svg'
 import {Link, useLocation} from "react-router-dom";
 
 
