@@ -11,7 +11,7 @@
 .item {
     border-radius: 8px;
     border: 1px solid #E0E0E0;
-    padding: 12px 20px;
+    padding: 12px;
 }
 
 .item:last-child .description {
